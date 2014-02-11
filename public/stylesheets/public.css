@@ -1,1 +1,18 @@
+body {
+  background-image: url('/images/subtle_zebra_3d.png');
+  font-family: 'Lato', sans-serif;
+}
 
+#banner {
+  margin-top: 200px;
+  text-align: center;
+}
+
+#banner h1 {
+  font-size: 6em;
+}
+
+#banner h2 {
+  font-size: 3em;
+  color: #999;
+}
