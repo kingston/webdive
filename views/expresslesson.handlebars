@@ -85,7 +85,46 @@ As you can see, we are requiring all our modules at the start of file where we c
     </div>
   </div>
   <h2>Connect Middleware</h2>
+  <p>You can think of middleware as layers that the requests go through to do various tasks.  The request is routed through the first layer, then the second, etc.  At each layer, the request can be handled right there and then, but otherwise it will keep on going.</p>
+  <div class="annotated-code">
+    <pre class="prettyprint linenums">
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded());
+app.use(express.methodOverride());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
+
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
+}</pre>
+    <div class="annotation" data-line="1">
+      Intercepts favicon requests and returns the image directly.
+    </div>
+    <div class="annotation" data-line="2">
+      Logs requests to the console.
+    </div>
+    <div class="annotation" data-line="3">
+      Don&quot;t worry about all of them - they do various useful things like parsing JSON requests for you.
+    </div>
+    <div class="annotation" data-line="6">
+      This is Express doing the controller routing for you.
+    </div>
+    <div class="annotation" data-line="7">
+      And if it could not be routed, it will check your '/public' folder for files
+    </div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Sencha Connect</h3>
+    </div>
+    <div class="panel-body">
+      <p>Express.js uses a set of middleware from the Sencha Connect framework, which you can read more about in the <a href="http://www.senchalabs.org/connect/">Connect documentation</a>.  It&apos;s great because it contains source code that is not too complicated.</p>
+    </div>
+  </div>
 
   <h2>All Done?</h2>
-  <a href="/expresslesson" class="btn btn-primary">Continue</a>
+  <a href="/mongolesson" class="btn btn-primary">Continue</a>
 </div>

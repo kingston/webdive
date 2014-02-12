@@ -37,6 +37,7 @@ app.get('/jslesson', classroutes.showClass);
 app.get('/jsadvlesson', classroutes.showJSAdv);
 app.get('/nodelesson', classroutes.showNode);
 app.get('/expresslesson', classroutes.showExpress);
+app.get('/mongolesson', classroutes.showMongo);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
