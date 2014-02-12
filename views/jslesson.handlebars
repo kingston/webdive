@@ -1,0 +1,106 @@
+<h1 class="title">JavaScript Deep Dive</h1>
+<ol class="breadcrumb">
+  <li class="active">JS Basics</li>
+</ol>
+<div class="section">
+  <h1 class="section-title">Fundamentals of JavaScript</h1>
+  <h2>Comments</h2>
+  <pre class="prettyprint linenums">
+// single-line comment
+/*
+  Multi-line
+  comment
+ */</pre>
+  <h2>Variables</h2>
+  <div class="annotated-code">
+    <pre class="prettyprint linenums">
+var first_name;
+first_name = "Kingston";
+var last_name = "Tam";</pre>
+    <div class="annotation" data-line="1">
+      Variables in JavaScript do not have a type so they can take up any type of variable, e.g. string, integer, double, etc.
+    </div>
+  </div>
+  <h2>If Statements</h2>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Running sample code</h3>
+    </div>
+    <div class="panel-body">
+      If you want to run the code yourself, feel free to whip out the Developer Console (press Command/Ctrl+Alt/Opt+I and click the Console tab) and paste the code in.
+    </div>
+  </div>
+  <div class="annotated-code">
+    <pre class="prettyprint linenums">
+var first_name = "Kingston";
+if (first_name === "Kingston") {
+  console.log("This person is awesome");
+} else if (first_name === "Kevin") {
+  console.log("This person is awesome but not as awesome ;)");
+} else {
+  console.log("Oh hey you");
+}
+
+if (0 == "") {
+  console.log("Umm... this works?");
+}</pre>
+    <div class="annotation" data-line="2">
+      Almost always use === (which checks both values are equal in both value and type)
+    </div>
+    <div class="annotation" data-line="10">
+      == leads to weird behavior because it tries to convert the values to the same type, e.g.
+    </div>
+  </div>
+  <h2>Functions</h2>
+  <pre class="prettyprint linenums">
+// inline declaration
+function sumTwoNumbers(num1, num2) {
+  return num1 + num2;
+}
+// but can also be a variable
+var summer = function(num1, num2) { return num1 + num2; }
+summer(1,2); // returns 3
+  </pre>
+  <h2>Objects</h2>
+  <pre class="prettyprint linenums">
+var kingston = { first_name: "Kingston", last_name: "Tam", age: 22 };
+kingston.doTheDougie = function() {
+  alert(this.first_name + ' says no');
+};
+kingston.doTheDougie();
+kingston.first_name; // evaluates to "Kingston"
+kingston['first_name']; // also evaluates to Kingston
+  </pre>
+  <h2>Arrays</h2>
+  <pre class="prettyprint linenums">
+var ordinals = ["first", "second", "third"];
+ordinals[3] = "fourth";
+ordinals.push("fifth"); // add one to the end
+console.log("There are " + ordinals.length + " ordinals and #0 is " + ordinals[0]);
+  </pre>
+  <h2>For Loops</h2>
+  <pre class="prettyprint linenums">
+var christmasSong = "";
+for (var i = 0; i < ordinals.length; i++) {
+  christmasSong += "On the " + ordinals[i] + " day of christmas, …\n";
+}
+console.log(christmasSong);
+  </pre><!---->
+  <h2>Useful Functions</h2>
+  <pre class="prettyprint linenums">
+console.log("I'm a message in the console"); // shows up in Chrome inspector console tab
+setTimeout(function() { alert('boo'); }, 1000); // calls function in 1000 milliseconds
+// old school functions (probably do not have to use)
+alert("HIII!! I'M SO ANNOYING"); // yes, that thing
+document; // the HTML document e.g. from <html> to </html>
+var elem = document.getElementById("myDiv"); // gets an element by ID
+elem.innerHTML = "Cool Stuff"; // modifes the inner HTML of the element
+  </pre>
+
+  <h2>Exercise #1: The Basics</h2>
+  <p>Try out <a href="http://jsfiddle.net/dv99v/1/" target="_blank">this JSFiddle exercise</a> and see if you can fill in the JavaScript to pass all the tests.  (bonus points if you pass the bonus tests)</p>
+  <p>And if you had time still, try this <a href="http://jsfiddle.net/eRm26/" target="_blank">secondary exercise</a></p>
+    
+  <h2>All Done?</h2>
+  <a href="/jsadvlesson" class="btn btn-primary">Continue</a>
+</div>

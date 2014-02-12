@@ -1,0 +1,77 @@
+body {
+  background-image: url('/images/subtle_zebra_3d.png');
+  font-family: 'Lato', sans-serif;
+  font-size: 1.5em;
+}
+
+li.L0, li.L1, li.L2, li.L3,
+li.L5, li.L6, li.L7, li.L8
+{ list-style-type: decimal !important }
+
+#content {
+  margin: 0 auto;
+  width: 960px;
+  padding: 10px;
+  background: #EDEDED;
+}
+
+.title {
+  font-size: 3em;
+  border-bottom: 1px solid #999;
+}
+
+.section-title {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.7em;
+}
+
+body pre.prettyprint {
+  width: 100%;
+}
+
+.annotated-code pre.prettyprint {
+  width: 50%;
+  float: left;
+}
+
+.annotated-code .annotation:first-of-type {
+  margin-top: 1em;
+}
+
+.annotated-code .annotation {
+  width: 46%;
+  float: right;
+  border: 1px solid #999;
+  background: #f2f2f2;
+  padding: 5px;
+  margin: 3px 2%;
+  border-radius: 4px;
+}
+
+.annotated-code:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+/* taken from https://github.com/IanLunn/Hover/blob/master/css/hover.css */
+.annotation {
+  display: inline-block;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.annotation.active {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  background: #fff;
+}
+

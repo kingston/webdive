@@ -6,7 +6,7 @@
 var express = require('express');
 var exphbs = require('express3-handlebars');
 var routes = require('./routes');
-var user = require('./routes/user');
+var classroutes = require('./routes/class');
 var http = require('http');
 var path = require('path');
 
@@ -33,6 +33,10 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/jslesson', classroutes.showClass);
+app.get('/jsadvlesson', classroutes.showJSAdv);
+app.get('/nodelesson', classroutes.showNode);
+app.get('/expresslesson', classroutes.showExpress);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
