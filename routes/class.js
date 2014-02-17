@@ -18,3 +18,7 @@ exports.showExpress = function(req, res){
 exports.showMongo = function(req, res){
   res.render('mongolesson', { title: 'Javascript Deep Dive' });
 };
+
+exports.showMongoose = function(req, res){
+  res.render('mongooselesson', { title: 'Javascript Deep Dive' });
+};

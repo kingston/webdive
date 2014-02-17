@@ -3,6 +3,8 @@
  * Module dependencies.
  */
 
+var settings = require('./settings');
+
 var express = require('express');
 var exphbs = require('express3-handlebars');
 var routes = require('./routes');
@@ -38,6 +40,7 @@ app.get('/jsadvlesson', classroutes.showJSAdv);
 app.get('/nodelesson', classroutes.showNode);
 app.get('/expresslesson', classroutes.showExpress);
 app.get('/mongolesson', classroutes.showMongo);
+app.get('/mongooselesson', classroutes.showMongoose);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
