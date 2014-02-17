@@ -3,8 +3,6 @@
  * Module dependencies.
  */
 
-var settings = require('./settings');
-
 var express = require('express');
 var exphbs = require('express3-handlebars');
 var routes = require('./routes');
