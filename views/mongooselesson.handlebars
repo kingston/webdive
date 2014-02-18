@@ -58,7 +58,14 @@ require('models/user.js');
 ...
 
 // install routes
-require('routes/article')(app);</pre>
+app.get('/articles', articles.all);
+app.post('/articles', articles.create);
+app.get('/articles/:articleId', articles.show);
+app.put('/articles/:articleId', articles.update);
+app.del('/articles/:articleId', articles.destroy);
+
+// Finish with setting up the articleId param
+app.param('articleId', articles.article);</pre>
     <div class="annotation" data-line="1">
       Just a hack substiution for a settings file.  MONGOHQ_URL is an environmental variable set by Heroku with the URL for the production database.  (and the || is for giving you a default development URL to myDatabase on localhost if the MONGOHQ_URL isn&apos;t set)
     </div>
@@ -68,8 +75,8 @@ require('routes/article')(app);</pre>
     <div class="annotation" data-line="7">
       Require the models to register them with mongoose.
     </div>
-    <div class="annotation" data-line="13">
-      This is a new paradigm, but basically each file in the routes folder exports a function that when called with the app will set up the relevant routes for that component.
+    <div class="annotation" data-line="20">
+      <a href="http://expressjs.com/api.html#app.param"><code>app.param</code></a> will automatically run all routes with <code>:articleId</code> through the <code>articles.article</code> function (which finds the relevant article for you so you don&apos;t have to do so in each of the controllers).
     </div>
   </div>
 
@@ -108,30 +115,6 @@ mongoose.model('Article', ArticleSchema);</pre>
     </div>
     <div class="annotation" data-line="20">
       Here we convert our schema into a model that Mongoose can use (the first argument is the name of the model).
-    </div>
-  </div>
-
-  <h3>routes/articles.js</h3>
-  <div class="annotated-code">
-    <pre class="prettyprint linenums">
-// Articles routes use articles controller
-var articles = require('../controllers/articles');
-
-module.exports = function(app) {
-    app.get('/articles', articles.all);
-    app.post('/articles', articles.create);
-    app.get('/articles/:articleId', articles.show);
-    app.put('/articles/:articleId', articles.update);
-    app.del('/articles/:articleId', articles.destroy);
-
-    // Finish with setting up the articleId param
-    app.param('articleId', articles.article);
-};</pre>
-    <div class="annotation" data-line="4">
-      Export a function that when called will set up all the article routes (to the articles controller).
-    </div>
-    <div class="annotation" data-line="12">
-      A bit of <a href="http://expressjs.com/api.html#app.param">magic</a> that will automatically run all routes with <code>:articleId</code> through the <code>articles.article</code> function (which finds the relevant article for you so you don&apos;t have to do so in each of the controllers).
     </div>
   </div>
 
