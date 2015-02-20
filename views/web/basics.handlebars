@@ -19,54 +19,13 @@
 <h2>Try it!</h2>
 
 <strong>Try making a link!</strong>
-<div class="tryit-widget">
-  <div class="tryit-code">
-    <ul class="nav nav-tabs">
-      <li class="active">
-        <a href="#html" data-toggle="tab">HTML</a>
-      </li>
-      <li><a href="#css" data-toggle="tab">CSS</a></li>
-      <li><a href="#js" data-toggle="tab">Javascript</a></li>
-    </ul>
-    <div id="webeditor" class="tab-content">
-      <div class="tab-pane active tryit-html" id="html">
-        <textarea class="contents">
-<strong>Hi</strong>
-        </textarea>
-      </div>
-      <div class="tab-pane tryit-css" id="css">
-        <textarea class="contents">
-strong {
-  font-size: 20px;
-}
-        </textarea>
-      </div>
-      <div class="tab-pane tryit-js" id="js">
-        <textarea class="contents">
-document.onload = function() {
-  alert("HI");
-}
-        </textarea>
-      </div>
-    </div>
-  </div>
-  <div class="tryit-preview">
-    <button type="button" class="btn btn-primary">Preview</button>
-    <div class="tryit-auto-wrapper">
-      <label class="checkbox-inline">
-        <input type="checkbox" class="auto-preview" /> Auto-update preview
-      </label>
-    </div>
-    <div class="tryit-iframe">
-      <iframe>
-      </iframe>
-    </div>
-  </div>
-  <div class="tryit-tests">
-    <ul>
-      <li class="success">✔ a link exists</li>
-      <li class="error">X link goes to http://google.com/</li>
-    </ul>
-    <div class="done-message">All done - congrats!</div>
-  </div>
+<div class="tryit-widget auto-update short">
+<pre class="html">
+</pre>
+<pre class="tests">
+xtests.add("strong tag found", "strong");
+xtests.add("text inside the strong tag", function() { return $("strong").text() != "" });
+</pre>
+</div>
+
 </div>

@@ -29,9 +29,53 @@
       </div>
     </div>
 
+<div id="tryit-template" style="display: none">
+  <div class="tryit-code">
+    <ul class="nav nav-tabs">
+      <li>
+        <a class="html-link" data-toggle="tab">HTML</a>
+      </li>
+      <li><a class="css-link" data-toggle="tab">CSS</a></li>
+      <li><a class="js-link" data-toggle="tab">Javascript</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane html-tab">
+        <pre>
+        </pre>
+      </div>
+      <div class="tab-pane css-tab">
+        <pre>
+        </pre>
+      </div>
+      <div class="tab-pane js-tab">
+        <pre>
+        </pre>
+      </div>
+    </div>
+  </div>
+  <div class="tryit-preview">
+    <button type="button" class="btn btn-primary">Preview</button>
+    <div class="tryit-auto-wrapper">
+      <label class="checkbox-inline">
+        <input type="checkbox" class="auto-preview" /> Auto-update preview
+      </label>
+    </div>
+    <div class="tryit-iframe">
+      <iframe>
+      </iframe>
+    </div>
+  </div>
+  <div class="tryit-tests" style="display: none">
+    <ul>
+    </ul>
+    <div class="done-message">All done - congrats!</div>
+  </div>
+
+</div>
 </body>
 <script src="/javascripts/jquery.min.js"></script>
 <script src="/javascripts/bootstrap.min.js"></script>
+<script src="/javascripts/ace/ace.js"></script>
 <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=sunburst&autoload=false&callback=prettyLoaded"></script>
 <script src="/javascripts/app.js"></script>
 </html>

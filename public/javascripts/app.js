@@ -27,11 +27,72 @@ function addAnnotations() {
   });
 }
 
+var languages = ['html', 'css', 'js'];
+
+var tryItVersion = 0;
+
 var TryItWidget = function($elem) {
   var widget = {};
+
+  tryItVersion += 1;
+
+  // load data and lock in the element
+  var contents = {};
+  var editors = {};
+
+  languages.forEach(function(lang) {
+    if ($elem.find("." + lang).length > 0) {
+      contents[lang] = $elem.find("." + lang).text();
+    }
+  });
+
+  var tests = $elem.find(".tests").text();
+
+  // clear element and replace with template
+  $elem.html($("#tryit-template").html());
+
+  // fill in tabs
+  var activated = false;
+  languages.forEach(function(lang) {
+    var link = $elem.find("." + lang + "-link");
+    if (!(lang in contents)) {
+      link.parent().hide();
+      return;
+    }
+    var tab = $elem.find("." + lang + "-tab");
+    var pre = tab.find("pre");
+    tab.attr('id', lang + "-tab-" + tryItVersion);
+    link.attr('href', "#" + tab.attr('id'));
+    pre.text(contents[lang]);
+    pre.attr('id', lang + "-editor-" + tryItVersion);
+
+    var editor = ace.edit(pre.attr('id'));
+    editor.setTheme("ace/theme/twilight");
+    var acelang = lang.replace("js", "javascript");
+    editor.getSession().setMode("ace/mode/" + acelang);
+    editors[lang] = editor;
+
+    if (!activated) {
+      link.parent().addClass("active");
+      tab.addClass("active");
+      activated = true;
+    }
+  });
+
+  var testElem = $elem.find(".tryit-tests");
+  if (tests) {
+    testElem.show();
+    testElem.find('ul').attr('id', 'tryit-tests-' + tryItVersion);
+  }
+
   var autoPreview = false;
 
+  if ($elem.hasClass('auto-update')) {
+    autoPreview = true;
+  }
+
   var autoPreviewCheckbox = $elem.find(".auto-preview");
+  autoPreviewCheckbox.get(0).checked = autoPreview;
   autoPreviewCheckbox.change(function() {
     if (autoPreviewCheckbox.get(0).checked) {
       autoPreview = true;
@@ -41,7 +102,7 @@ var TryItWidget = function($elem) {
     }
   });
 
-  $elem.find(".tab-content textarea").keyup(function() {
+  $elem.find(".tab-content pre").keyup(function() {
     if (autoPreview) widget.preview();
   });
 
@@ -50,13 +111,22 @@ var TryItWidget = function($elem) {
   });
 
   widget.preview = function() {
-    var html = $elem.find(".tryit-html textarea").val();
-    var css = $elem.find(".tryit-css textarea").val();
-    var js = $elem.find(".tryit-js textarea").val();
-
-    var output = "<style type='text/css'>" + css + "</style>";
-    output += "<script type='text/javascript'>" + js + "</script>";
-    output += html;
+    var output = "";
+    if ('css' in editors) {
+      output += "<style type='text/css'>" + editors['css'].getValue() + "</style>";
+    }
+    if ('js' in editors) {
+      output += "<script type='text/javascript'>" + editors['js'].getValue() + "</script>";
+    }
+    if (tests) {
+      output += "<script src='/javascripts/jquery.min.js'></script>";
+      output += "<script src='/javascripts/xtests.js'></script>";
+      output += "<script type='text/javascript'>xtests.setup('" + testElem.find('ul').attr('id') + "');</script>";
+      output += "<script type='text/javascript'>" + tests + "</script>";
+    }
+    if ('html' in editors) {
+      output += editors['html'].getValue();
+    }
     $elem.find(".tryit-iframe iframe").get(0).srcdoc = output;
   }
 

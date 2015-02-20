@@ -87,9 +87,17 @@ body pre.prettyprint {
   margin-top: 10px;
 }
 
-.tryit-widget .tab-content textarea {
+.tryit-widget .tab-content pre {
   height: 200px;
   width: 100%;
+}
+
+.tryit-widget.short .tab-content pre {
+  height: 50px;
+}
+
+.tryit-widget.short .tryit-iframe iframe {
+  height: 50px;
 }
 
 .tryit-widget:after {
@@ -133,6 +141,9 @@ body pre.prettyprint {
 
 .tryit-tests {
   padding-left: 5px;
+  clear: both;
+  width: 100%;
+  border-top: 1px solid gray;
 }
 
 .tryit-tests ul {
@@ -142,6 +153,18 @@ body pre.prettyprint {
 .tryit-tests li {
   list-style-type: none;
   font-weight: bold;
+}
+
+.tryit-tests li.success:before {
+  content: "✔";
+  width: 20px;
+  display: inline-block;
+}
+
+.tryit-tests li.error:before {
+  content: "✗";
+  width: 20px;
+  display: inline-block;
 }
 
 .tryit-tests li.success {
