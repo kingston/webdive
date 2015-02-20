@@ -1,6 +1,3 @@
-$(function() {
-});
-
 window.exports = {};
 window.exports['prettyLoaded'] = function () {
   addAnnotations();
@@ -30,3 +27,46 @@ function addAnnotations() {
   });
 }
 
+var TryItWidget = function($elem) {
+  var widget = {};
+  var autoPreview = false;
+
+  var autoPreviewCheckbox = $elem.find(".auto-preview");
+  autoPreviewCheckbox.change(function() {
+    if (autoPreviewCheckbox.get(0).checked) {
+      autoPreview = true;
+      widget.preview();
+    } else {
+      autoPreview = false;
+    }
+  });
+
+  $elem.find(".tab-content textarea").keyup(function() {
+    if (autoPreview) widget.preview();
+  });
+
+  $elem.find(".tryit-preview .btn").click(function() {
+    widget.preview();
+  });
+
+  widget.preview = function() {
+    var html = $elem.find(".tryit-html textarea").val();
+    var css = $elem.find(".tryit-css textarea").val();
+    var js = $elem.find(".tryit-js textarea").val();
+
+    var output = "<style type='text/css'>" + css + "</style>";
+    output += "<script type='text/javascript'>" + js + "</script>";
+    output += html;
+    $elem.find(".tryit-iframe iframe").get(0).srcdoc = output;
+  }
+
+  widget.preview();
+
+  return widget;
+}
+
+$(function() {
+  $(".tryit-widget").each(function(idx, el) {
+    TryItWidget($(el));
+  });
+});

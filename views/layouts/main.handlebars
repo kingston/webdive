@@ -11,7 +11,22 @@
 <body>
 
     <div id="content">
-      {{{body}}}
+      <h1 class="title">{{className}}</h1>
+      <ol class="breadcrumb">
+        {{#breadcrumbs}}
+        <li><a href="{{url}}" class="{{isActive}}">{{name}}</a></li>
+        {{/breadcrumbs}}
+      </ol>
+      <div class="section">
+        <h1 class="section-title">{{lessonName}}</h1>
+        {{{body}}}
+        <h2>All Done?</h2>
+        {{#if nextLink}}
+          <a href="{{nextLink}}" class="btn btn-primary">Continue</a>
+        {{else}}
+          <p>Well, that&apos;s all folks</p>
+        {{/if}}
+      </div>
     </div>
 
 </body>

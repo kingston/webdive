@@ -75,3 +75,87 @@ body pre.prettyprint {
   background: #fff;
 }
 
+/** Try It Widget **/
+
+.tryit-widget {
+  margin-top: 10px;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+
+.tryit-widget .tab-content {
+  margin-top: 10px;
+}
+
+.tryit-widget .tab-content textarea {
+  height: 200px;
+  width: 100%;
+}
+
+.tryit-widget:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.tryit-code {
+  width: 50%;
+  float: left;
+  padding: 5px;
+  border-right: 1px solid #999;
+}
+
+.tryit-preview {
+  width: 50%;
+  float: left;
+  padding: 5px;
+}
+
+.tryit-preview button {
+  float: left;
+}
+
+.tryit-auto-wrapper {
+  float: right;
+  margin-top: 5px;
+  font-size: 1.2em;
+}
+
+.tryit-iframe {
+  padding-top: 20px;
+  clear: both;
+}
+
+.tryit-iframe iframe {
+  width: 100%;
+  height: 200px;
+}
+
+.tryit-tests {
+  padding-left: 5px;
+}
+
+.tryit-tests ul {
+  padding: 0px;
+}
+
+.tryit-tests li {
+  list-style-type: none;
+  font-weight: bold;
+}
+
+.tryit-tests li.success {
+  color: green;
+}
+
+.tryit-tests li.error {
+  color: #800;
+}
+
+.tryit-tests .done-message {
+  color: green;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  display: none;
+}
