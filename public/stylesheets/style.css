@@ -32,6 +32,10 @@ body pre.prettyprint {
   width: 100%;
 }
 
+.annotated-code .linenums li {
+  padding: 1px; /* replaced by border */
+}
+
 .annotated-code pre.prettyprint {
   width: 50%;
   float: left;
@@ -43,6 +47,7 @@ body pre.prettyprint {
 
 .annotated-code .annotation {
   width: 46%;
+  clear: right;
   float: right;
   border: 1px solid #999;
   background: #f2f2f2;
@@ -76,6 +81,11 @@ body pre.prettyprint {
 }
 
 /** Try It Widget **/
+
+.tryit-instructions {
+  margin-top: 20px;
+  font-weight: bold;
+}
 
 .tryit-widget {
   margin-top: 10px;

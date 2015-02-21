@@ -1,7 +1,12 @@
-window.exports = {};
-window.exports['prettyLoaded'] = function () {
+//window.exports = {};
+//window.exports['prettyLoaded'] = function () {
+  //addAnnotations();
+//};
+
+$(function() {
+  prettyPrint();
   addAnnotations();
-};
+});
 
 function addAnnotations() {
   $(".annotation").each(function(i) {
@@ -13,12 +18,14 @@ function addAnnotations() {
     var activate = function() {
       lineElem.css('border', "1px solid #999");
       lineElem.css('background-color', "#333");
+      lineElem.css('padding', "0");
       annotation.addClass('active');
     };
 
     var deactivate = function() {
       lineElem.css('border', "");
       lineElem.css('background-color', "");
+      lineElem.css('padding', "1px");
       annotation.removeClass('active');
     };
 
