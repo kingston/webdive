@@ -1,0 +1,283 @@
+<h2>Box Model, a.k.a. spacing</h2>
+
+<div class="annotated-code">
+  <pre class="prettyprint linenums lang-css">
+.spaced {
+	width: 200px;
+	height: 100px;
+	padding: 10px 5px;
+	border: 5px solid black;
+	margin: 10px 5px;
+}
+</pre>
+  <div class="annotation" data-line="4">
+    Padding: Refers to spacing between the content and the border
+  </div>
+  <div class="annotation" data-line="5">
+    Border: Size of the border
+  </div>
+  <div class="annotation" data-line="6">
+    Margin: Refers to spacing between the next element and the border.
+  </div>
+</div>
+
+<img src="/images/boxmodel.png" />
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Specifying different spaces for different sides</h3>
+  </div>
+  <div class="panel-body">
+    <p>To select different sizes for different sides, you simply specify the pixel sizes in clockwise order starting from top.  (e.g. padding: 1px 2px 3px 4px means 1px padding at the top, 2px on the right, 3px on the bottom, etc.).  A short hand for saying 10px at top and bottom and 5px for left and right is just to specify 2 values, e.g. padding: 10px 5px.</p>
+  </div>
+</div>
+
+<h3>Play with it!</h3>
+
+<div class="tryit-widget auto-update">
+<pre class="html">
+&lt;div class='wrapper'&gt;
+&lt;div class='spaced'&gt;
+	Some text and content
+&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<pre class="css">
+.spaced {
+	width: 200px;
+	height: 100px;
+	padding: 10px 5px;
+	border: 5px solid black;
+	margin: 10px 5px;
+}
+
+.wrapper {
+	border: 1px solid black;
+}
+</pre>
+</div>
+
+<div class="tryit-instructions">Optional Challenge: Make it spacey!</div>
+<div class="tryit-widget auto-update">
+<pre class="html readonly">
+&lt;div id=&quot;title&quot;&gt;Standard&#039;s Day Conversation&lt;/div&gt;
+&lt;div class=&quot;statement&quot;&gt;
+	&lt;span class=&quot;author&quot;&gt;Kingston:&lt;/span&gt;
+	&lt;span class=&quot;text&quot;&gt;Hey!&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;statement&quot;&gt;
+	&lt;span class=&quot;author obama&quot;&gt;Obama:&lt;/span&gt;
+	&lt;span class=&quot;text&quot;&gt;Sup?&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;statement question&quot;&gt;
+	&lt;span class=&quot;author&quot;&gt;Kingston:&lt;/span&gt;
+	&lt;span class=&quot;text&quot;&gt;Not much, you?&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;statement answer&quot;&gt;
+	&lt;span class=&quot;author obama&quot;&gt;Obama:&lt;/span&gt;
+	&lt;span class=&quot;text&quot;&gt;Just gotta a country to run&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;statement&quot;&gt;
+	&lt;span class=&quot;author&quot;&gt;Kingston:&lt;/span&gt;
+	&lt;span class=&quot;text&quot;&gt;No worries, gotta run the world myself. Cya!&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;statement thought&quot;&gt;
+	&lt;span class=&quot;author obama&quot;&gt;Obama:&lt;/span&gt;
+	&lt;span class=&quot;text&quot;&gt;...&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+<pre class="css">
+#title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.statement {
+    border-bottom: 1px solid gray;
+}
+
+.author {
+    font-weight: bold;
+}
+
+.question .text {
+    font-style: italic;
+}
+
+.thought {
+    color: gray;
+}
+</pre>
+<pre class="tests">
+xtests.add("give the title 20px margin for the bottom", function() { return $("#title").css('margin-bottom-size') == "20px" });
+xtests.add("give each statement a 4px padding", function() { return $(".statement").css('padding') == "4px" });
+xtests.add("give all obama authors left margin of 10px", function() { return $(".obama").css('margin-left') == "10px" });
+</pre>
+</div>
+
+<h2>Floats</h2>
+
+<p>Floats are useful for arranging multiple divs next to each other horizontally. (for example, if I have multiple cards I want to show side-by-side)</p>
+
+<pre class="prettyprint lang-css">
+float: left;
+float: right;
+clear: both;
+</pre>
+
+<div class="annotated-code">
+  <pre class="prettyprint linenums lang-css">
+float: left;
+float: right;
+clear: both;
+</pre>
+  <div class="annotation" data-line="1">
+    Effectively lifts the div and floats it to the left such that the div following it can come up to its right.
+  </div>
+  <div class="annotation" data-line="3">
+    Border: Size of the border
+  </div>
+  <div class="annotation" data-line="6">
+    This is an important property that makes sure that any floating divs before it will stay above it.
+  </div>
+</div>
+
+<h3>Play with it!</h3>
+
+
+<div class="tryit-widget auto-update">
+<pre class="html">
+&lt;div class=&quot;leftfloat&quot;&gt;Left 1&lt;/div&gt;
+&lt;div class=&quot;leftfloat&quot;&gt;Left 2&lt;/div&gt;
+&lt;div class=&quot;rightfloat&quot;&gt;Right &lt;/div&gt;
+&lt;div class=&quot;clear&quot;&gt;fudge&lt;/div&gt;
+</pre>
+<pre class="css">
+div {
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid gray;
+}
+
+.leftfloat {
+	float: left;
+}
+
+.rightfloat {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+</pre>
+</div>
+
+<h2>Position</h2>
+
+<p>Also very useful, but takes a bit more to explain.  There are several types of positioning: relative, static (the default), absolute, and fixed.</p>
+
+<div class="annotated-code">
+  <pre class="prettyprint linenums lang-css">
+.wrapper {
+	position: relative;
+	margin: 0 auto;
+	height: 150px;
+	width: 300px;
+}
+
+.relative-shift {
+	position: relative;
+	left: 10px;
+	top: 10px;
+}
+
+.bottomright {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+</pre>
+  <div class="annotation" data-line="2">
+    Relative: Positioned relative to its position it would have otherwise had
+  </div>
+  <div class="annotation" data-line="3">
+    0 auto: a clever way of centering a div (as it effectively says 0 top/bottom margin and as much left/width margin as possible, i.e. centered)
+    Make sure you specify a width for it though.
+  </div>
+  <div class="annotation" data-line="10">
+    top/right/bottom/left give you ways of shifting it relative to where it would have otherwise (for position: relative)
+  </div>
+  <div class="annotation" data-line="15">
+    absolute is relative to the first (non-static) container tag
+  </div>
+  <div class="annotation" data-line="16">
+    top/right/... refer to how many pixels in between the border of the container tag and the element on that side
+  </div>
+</div>
+
+<h3>Play with it!</h3>
+
+<div class="tryit-widget auto-update">
+<pre class="html">
+&lt;div id=&#039;wrapper&#039;&gt;
+	&lt;div&gt;Normal div&lt;/div&gt;
+	&lt;div class=&#039;relative-shift&#039;&gt;Shifted div&lt;/div&gt;
+	&lt;div&gt;Normal div&lt;/div&gt;
+	&lt;div class=&#039;bottomright&#039;&gt;Bottom right div&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<pre class="css">
+div {
+	background-color: rgba(100, 100, 100, 0.2);
+	border: 1px solid #333;
+}
+
+#wrapper {
+	position: relative;
+	margin: 0 auto;
+	height: 150px;
+	width: 300px;
+}
+
+.relative-shift {
+	position: relative;
+	left: 10px;
+	top: 10px;
+}
+
+.bottomright {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+</pre>
+</div>
+
+<h2>New CSS Properties</h2>
+
+<p>And some cool CSS properties that you can explore at your own leisure.</p>
+
+<div class="annotated-code">
+  <pre class="prettyprint linenums lang-css">
+div {
+	text-shadow: 1px 1px 1px black;
+	box-shadow: 1px 1px 1px black;
+	border-radius: 5px;
+}
+</pre>
+  <div class="annotation" data-line="2">
+    text-shadow: Makes a <span style='text-shadow: 1px 1px 1px black'>dark shadow around the text</span>.
+  </div>
+  <div class="annotation" data-line="3">
+    box-shadow: same thing but for <span style='display:inline-block;box-shadow: 1px 1px 1px black'>boxes</span>
+  </div>
+  <div class="annotation" data-line="4">
+    border-radius: <span style='display:inline-block;border: 1px solid black;border-radius:5px'>rounded rectangles</span>
+  </div>
+</div>
+
+
+
+

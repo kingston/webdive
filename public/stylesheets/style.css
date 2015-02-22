@@ -91,6 +91,7 @@ body pre.prettyprint {
   margin-top: 10px;
   border: 1px solid #999;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .tryit-widget .tab-content {

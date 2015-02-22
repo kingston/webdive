@@ -9,16 +9,27 @@
 </ul>
 
 <h2>Elements/Tags/Attributes</h2>
+<p>Look at this tag:</p>
 <div class="annotated-code">
-  <pre class="prettyprint linenums">
-&lt;strong&gt;Hi&lt;/strong&gt;</pre>
+  <pre class="prettyprint">
+&lt;a href='http://www.google.com/'&gt;Go to Google!&lt;/a&gt;</pre>
+  <div class="annotation" data-line="1">
+    <a href='http://www.google.com/'>Go to Google!</a>
+  </div>
 </div>
 
-<p>Here, we are using the <strong>strong</strong> element, which bolds the text inside it.  The whole text you can refer to as the "&lt;strong&gt;" tag.</p>
+<p>We can say several things about it:</p>
 
-<h2>Try it!</h2>
+<ul>
+  <li><strong>&lt;...&gt; <em>contents</em> &lt;/...&gt;</strong> forms the basis of all tags</li>
+  <li><strong>a</strong> is the element, which tells what type the tag is (here it means link)</li>
+  <li><strong>href</strong> is the attribute that a elements have, which describe where the link should go</li>
+  <li>Go to Google! is where the contents of the tag, i.e. the text of the link in this case</li>
+</ul>
 
-<strong>Try making a link!</strong>
+<h3>Try it!</h3>
+
+<div class="tryit-instructions">Make a strong tag with some text inside it</div>
 <div class="tryit-widget auto-update short">
 <pre class="html">
 </pre>
@@ -26,6 +37,85 @@
 xtests.add("strong tag found", "strong");
 xtests.add("text inside the strong tag", function() { return $("strong").text() != "" });
 </pre>
+</div>
+
+<div class="tryit-instructions">Make a link to http://www.facebook.com</div>
+<div class="tryit-widget auto-update short">
+<pre class="html">
+</pre>
+<pre class="tests">
+xtests.add("link tag found", "a");
+xtests.add("link goes to http://www.facebook.com", "a[href='http://www.facebook.com']");
+</pre>
+</div>
+
+<h2>Nesting Tags</h2>
+<p>You will obviously want to be able to make more complex tags, e.g. a link in bold text, which you do simply by placing the tag inside the contents of another tag:</p>
+
+<div class="annotated-code">
+  <pre class="prettyprint">
+&lt;strong&gt;Bold statement but &lt;a href='http://example.com'&gt;this&lt;/a&gt; is better&lt;/strong&gt;</pre>
+  <div class="annotation" data-line="1">
+    <strong>Bold statement but <a href="http://example.com">this is better</a></strong>
+  </div>
+</div>
+
+<h2>Div/Span</h2>
+Divs and spans are just ways of grouping tags together so that they can be referenced from elsewhere (e.g. CSS which we will get to).  The &lt;div&gt; element is laid out like a block so starts a new line each time vs. &lt;span&gt; is laid out within the line.
+
+<div class="annotated-code">
+  <pre class="prettyprint">
+&lt;div&gt;Each div&lt;/div&gt;&lt;div&gt;starts a&lt;/div&gt;&lt;div&gt;anew&lt;/div&gt;</pre>
+  <div class="annotation" data-line="1">
+    <div>Each div</div><div>starts</div><div>anew</div>
+  </div>
+</div>
+
+<p>vs.</p>
+
+<div class="annotated-code">
+  <pre class="prettyprint">
+&lt;span&gt;But the&lt;/span&gt; &lt;span&gt;spans span&lt;/span&gt; &lt;span&gt;across one line&lt;/span&gt;</pre>
+  <div class="annotation" data-line="1">
+    <span>But the</span> <span>spans span</span> <span>across one line</span>
+  </div>
+</div>
+
+<h2>Comments</h2>
+
+Comments are special, but they&#039;re pretty simple.  They get ignored by the browser but show up in the code.  Starts with &lt;!-- and ends with --&gt;.
+
+<div class="annotated-code">
+  <pre class="prettyprint">
+&lt;!-- hi there, no-one can see me --&gt;</pre>
+  <div class="annotation" data-line="1">
+    <!-- hi there, no-one can see me --></span>
+  </div>
+</div>
+
+<h2>Try It!</h2>
+
+<div class="tryit-instructions">Make a link to http://kittens.com inside a div which has an attribute called "class" containing "wow"
+</div>
+<div class="tryit-widget auto-update short">
+<pre class="html">
+</pre>
+<pre class="css">
+.wow a {
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+}
+
+.wow a:hover {
+  font-size: 20px;
+  color: #F00;
+  padding-left: 200px;
+}
+<pre class="tests">
+xtests.add("div with the 'wow' class", "div.wow");
+xtests.add("link to http://kittens.com inside div", "div.wow a[href='http://kittens.com']");</pre>
 </div>
 
 </div>

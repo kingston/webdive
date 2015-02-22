@@ -1,0 +1,277 @@
+<h2>The Terms</h2>
+
+<ul>
+	<li><strong>Selector:</strong> A way to specify a particular type of tag, e.g. all "a" tags</li>
+	<li><strong>Property:</strong> A rule to apply to this tag</li>
+	<li><strong>Comment:</strong> Comments are created by starting with a /* and ending with a */</li>
+</ul>
+
+<h2>CSS Syntax</h2>
+
+<p>A basic CSS rule might look like:</p>
+
+<div class="annotated-code">
+  <pre class="prettyprint linenums lang-css">
+/* My Cool Rules */
+a
+{
+	font-weight: bold;
+}</pre>
+  <div class="annotation" data-line="1">
+    An example of a comment
+  </div>
+  <div class="annotation" data-line="2">
+    Selects all "a" (link) tags
+  </div>
+  <div class="annotation" data-line="3">
+    All the rules must be in between a { and a }
+  </div>
+  <div class="annotation" data-line="4">
+    A property such that all tags selected by it will be bold.  (of the form, property-name: property-value; )
+  </div>
+</div>
+
+<h2>Selectors</h2>
+
+<div class="annotated-code">
+  <pre class="prettyprint linenums lang-css">
+/* Element selector */
+a { }
+
+/* Class selector */
+.success { }
+
+/* Id selector */
+#search { }
+
+/* Combining selectors */
+#search .success { }
+
+a.success { }
+</pre>
+  <div class="annotation" data-line="2">
+    selects all "a" tags
+  </div>
+  <div class="annotation" data-line="5">
+    selects all tags with "success" class
+  </div>
+  <div class="annotation" data-line="8">
+    selects all tags whose id is "search" (should only be one)
+  </div>
+  <div class="annotation" data-line="11">
+    selects all tags with "success" class that are inside a tag with id "search"
+  </div>
+  <div class="annotation" data-line="13">
+    no space means select all links that have class "success" (combines them for one element)
+  </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Difference between ID and Class</h3>
+  </div>
+  <div class="panel-body">
+    <p>Many tags can have the same class and therefore is good for describing frequent types of tags, e.g. a blue button.  However, an ID should be unique to the tag, which makes it good if it's the only element in the page, e.g. a search text box.</p>
+  </div>
+</div>
+
+<h2>Properties</h2>
+
+<p>Here are some common properties used to style elements:</p>
+
+<div class="annotated-code">
+  <pre class="prettyprint linenums lang-css">
+a {
+	font-weight: bold;
+	font-style: italic;
+	font-size: 20px;
+	color: brown;
+}
+
+div {
+	border: 1px solid gray;
+	background-color: green;
+}
+
+body {
+	background-image: url('/images/kitten.jpg')
+}
+</pre>
+  <div class="annotation" data-line="2">
+    The weight of the font (normal and bold being the most common ones)
+  </div>
+  <div class="annotation" data-line="3">
+    The style of the font (normal and italics being the most common ones)
+  </div>
+  <div class="annotation" data-line="4">
+    The size of the font in either pixels (e.g. 13px) or em (1.2em), which is relative size to normal sizes.
+  </div>
+  <div class="annotation" data-line="5">
+    The color of the text
+  </div>
+  <div class="annotation" data-line="9">
+	First value specifies the width of the border, the type of border (solid, dotted), the color of the border
+  </div>
+  <div class="annotation" data-line="10">
+	The background color of the div
+  </div>
+  <div class="annotation" data-line="13">
+	You can also select body, which will select the entire page
+  </div>
+  <div class="annotation" data-line="14">
+  	You can select a background image, which is useful for repeated backgrounds. (see <a href="http://subtlepatterns.com/">Subtle Patterns</a> for a great resource)
+  </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Getting borders on specific sides</h3>
+  </div>
+  <div class="panel-body">
+    <p>You can specify a border on only one side by appending "-bottom" (or top, left, right) to the property, e.g. "border-bottom: 1px solid gray".</p>
+  </div>
+</div>
+
+
+<h3>Play with it!</h3>
+
+<div class="tryit-instructions">Make the bolder text</div>
+<div class="tryit-widget auto-update">
+<pre class="html">
+&lt;div&gt;
+	Here is some
+	&lt;a href=&quot;http://placebear.com/&quot;&gt;very cool content.&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+<pre class="css">
+a {
+	font-weight: bold;
+	font-style: italic;
+	font-size: 20px;
+	color: brown;
+}
+
+div {
+	border: 1px solid gray;
+	background-color: green;
+}
+
+body {
+	background-image: url('/images/kitten.jpg')
+}
+</pre>
+</div>
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Chrome Developer Tools</h3>
+  </div>
+  <div class="panel-body">
+    <p>Right click and click Inspect Element to open Chrome Developer Tools.  Super helpful for debugging.  See <a href="https://developer.chrome.com/devtools/docs/dom-and-styles">Google help page</a> for more info.</p>
+  </div>
+</div>
+
+<h3>Now for some quizes!</h3>
+
+
+
+
+
+<div class="tryit-instructions">Make all the spans inside the "shrink" div be 9px large</div>
+<div class="tryit-widget auto-update">
+<pre class="html readonly">
+&lt;div class=&quot;normal&quot;&gt;
+I &lt;span&gt;shouldn&#039;t shrink&lt;/span&gt;.
+&lt;/div&gt;
+&lt;div class=&quot;shrink&quot;&gt;
+I &lt;span&gt;should shrink&lt;/span&gt;
+&lt;/div&gt;
+
+</pre>
+<pre class="css"></pre>
+<pre class="tests">
+xtests.add("non-shrink spans are not 9px", function() { return $(".normal span").css('font-size') != "9px" });
+xtests.add("shrink spans are 9px", function() { return $(".shrink span").first().css('font-size') == "9px" });
+</pre>
+</div>
+
+<div class="tryit-instructions">Make the tests pass!</div>
+<div class="tryit-widget auto-update">
+<pre class="html readonly">
+&lt;div id=&quot;alpha&quot;&gt;Make my font 20px large!&lt;/div&gt;
+&lt;div class=&quot;beta&quot;&gt;Casual beta... (don&#039;t touch me)&lt;/div&gt;
+&lt;div id=&quot;new&quot;&gt;
+	&lt;div class=&quot;beta&quot;&gt;A bolder beta...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;!-- and for reference --&gt;&lt;/p&gt;
+
+&lt;pre&gt;
+
+&amp;lt;div id=&amp;quot;alpha&amp;quot;&amp;gt;Make my font 20px large!&amp;lt;/div&amp;gt;
+&amp;lt;div class=&amp;quot;beta&amp;quot;&amp;gt;Casual beta... (don&amp;#039;t touch me)&amp;lt;/div&amp;gt;
+&amp;lt;div id=&amp;quot;new&amp;quot;&amp;gt;
+	&amp;lt;div class=&amp;quot;beta&amp;quot;&amp;gt;A bolder beta...&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+
+&lt;/pre&gt;
+
+</pre>
+<pre class="css"></pre>
+<pre class="tests">
+xtests.add("first div is 20px", function() { return $("#alpha").css('font-size') == "20px" });
+xtests.add("second div is normal", function() { return $(".beta").first().css('font-weight') != "bold" });
+xtests.add("the new beta is bold", function() { return $("#new .beta").css('font-weight') == "bold" });
+</pre>
+</div>
+
+<div class="tryit-instructions">Optional Challenge: Get the selectors right!</div>
+<div class="tryit-widget auto-update">
+<pre class="html readonly">
+&lt;div id=&quot;title&quot;&gt;Standard&#039;s Day Conversation&lt;/div&gt;
+&lt;div class=&quot;statement&quot;&gt;
+	&lt;span class=&quot;author&quot;&gt;Kingston:&lt;/span&gt;
+	&lt;span class=&quot;text&quot;&gt;Hey!&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;statement&quot;&gt;
+	&lt;span class=&quot;author&quot;&gt;Obama:&lt;/span&gt;
+	&lt;span class=&quot;text&quot;&gt;Sup?&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;statement question&quot;&gt;
+	&lt;span class=&quot;author&quot;&gt;Kingston:&lt;/span&gt;
+	&lt;span class=&quot;text&quot;&gt;Not much, you?&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;statement answer&quot;&gt;
+	&lt;span class=&quot;author&quot;&gt;Obama:&lt;/span&gt;
+	&lt;span class=&quot;text&quot;&gt;Just gotta a country to run&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;statement&quot;&gt;
+	&lt;span class=&quot;author&quot;&gt;Kingston:&lt;/span&gt;
+	&lt;span class=&quot;text&quot;&gt;No worries, gotta run the world myself. Cya!&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class=&quot;statement thought&quot;&gt;
+	&lt;span class=&quot;author&quot;&gt;Obama:&lt;/span&gt;
+	&lt;span class=&quot;text&quot;&gt;...&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+<pre class="css"></pre>
+<pre class="tests">
+xtests.add("title is bold and 24px large", function() { return $("#title").css('font-size') == "24px" &amp;&amp; $("#title").css('font-weight') == "bold" });
+xtests.add("statements have a 1px bottom border", function() { return $(".statement").css('border-bottom-width') == "1px" });
+xtests.add("statements have a no top border", function() { return $(".statement").css('border-top-width') != "1px" });
+xtests.add("authors are bold", function() { return $(".author").css('font-weight') == "bold" });
+xtests.add("text in questions are italic", function() { return $(".question .text").css('font-style') == "italic" });
+xtests.add("authors/text in thought are gray", function() { return $(".thought .author").css('color') == "rgb(128, 128, 128)" });
+</pre>
+</div>
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Hexadecimal #colors</h3>
+  </div>
+  <div class="panel-body">
+    <p>To specify more than just words for colors, you can specify the hexadecimal color, which looks something like #0FA.  <a href='http://www.htmlgoodies.com/tutorials/colors/article.php/3478951'>Look here</a> for more info.  The basic idea is that the first number mean how much red, the next how much blue, and the last much green in hexadecimal.  (e.g. #f00 means all red and no blue/green and #999 means gray)</p>
+  </div>
+</div>

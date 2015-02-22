@@ -1,0 +1,25 @@
+<h2>3 ways of including CSS</h2>
+<div class="annotated-code">
+  <pre class="prettyprint linenums">
+&lt;!-- External CSS --&gt;
+&lt;link href=&quot;css/main.css&quot; rel=&quot;stylesheet&quot; /&gt;
+
+&lt;!-- Internal tags --&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+.test {
+}
+&lt;/style&gt;
+
+&lt;!-- Inline --&gt;
+&lt;div style=&quot;background-color: red&quot;&gt;...&lt;/div&gt;
+</pre>
+  <div class="annotation" data-line="2">
+    This is the best way of including CSS on your page as it places the CSS into a separate file and doesn't clutter your HTML page.
+  </div>
+  <div class="annotation" data-line="5">
+    You can include CSS rules directly on the page, but it's generally not advised unless you're doing a quick demo.
+  </div>
+  <div class="annotation" data-line="11">
+    You can even put it directly on the element, but this can get very tricky as you have to put it on every element.
+  </div>
+</div>

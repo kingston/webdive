@@ -45,11 +45,13 @@ var TryItWidget = function($elem) {
 
   // load data and lock in the element
   var contents = {};
+  var readonly = {};
   var editors = {};
 
   languages.forEach(function(lang) {
     if ($elem.find("." + lang).length > 0) {
       contents[lang] = $elem.find("." + lang).text();
+      readonly[lang] = $elem.find("." + lang).hasClass('readonly');
     }
   });
 
@@ -69,6 +71,7 @@ var TryItWidget = function($elem) {
     var tab = $elem.find("." + lang + "-tab");
     var pre = tab.find("pre");
     tab.attr('id', lang + "-tab-" + tryItVersion);
+
     link.attr('href', "#" + tab.attr('id'));
     pre.text(contents[lang]);
     pre.attr('id', lang + "-editor-" + tryItVersion);
@@ -77,6 +80,10 @@ var TryItWidget = function($elem) {
     editor.setTheme("ace/theme/twilight");
     var acelang = lang.replace("js", "javascript");
     editor.getSession().setMode("ace/mode/" + acelang);
+    if (readonly[lang]) {
+      editor.setReadOnly(true);
+      link.text(link.text() + " (locked)");
+    }
     editors[lang] = editor;
 
     if (!activated) {
