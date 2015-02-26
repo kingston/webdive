@@ -56,11 +56,15 @@ function findLessonInClass(classData, lessonName) {
   return null;
 }
 
+function getLessonLink(classData, lessonIndex) {
+    return "/" + classData.folder + "/" + classData.lessons[lessonIndex].name;
+}
+
 function buildBreadcrumbs(classData, lessonName) {
   var breadcrumbs = []
   for (var i = 0; i < classData.lessons.length; i++) {
     var entry = {
-      url: "/c/" + classData.folder + "/" + classData.lessons[i].name,
+      url: getLessonLink(classData, i),
       name: classData.lessons[i].title,
       isActive: ""
     };
@@ -76,10 +80,14 @@ function buildBreadcrumbs(classData, lessonName) {
 function getNextLink(classData, lessonName) {
   for (var i = 0; i < classData.lessons.length; i++) {
     if (classData.lessons[i].name === lessonName && i + 1 < classData.lessons.length) {
-      return "/c/" + classData.folder + "/" + classData.lessons[i + 1].name;
+      return getLessonLink(classData, i + 1);
     }
   }
   return null;
+}
+
+function send404(res) {
+  res.status(404).send('Not found');
 }
 
 exports.showClass = function(req, res) {
@@ -87,15 +95,18 @@ exports.showClass = function(req, res) {
   var lessonName = req.params['lessonName'];
   // get class
   if (!(className in classes)) {
-    //TODO: Render 404
-    res.end();
+    send404(res);
     return;
   }
   var classData = classes[className];
+  // redirect to first class if no lesson name is provided
+  if (!lessonName) {
+    res.redirect(getLessonLink(classData, 0));
+    return;
+  }
   var lessonData = findLessonInClass(classData, lessonName);
   if (lessonData === null) {
-    //TODO: Render 404
-    res.end();
+    send404(res);
     return;
   }
   var breadcrumbs = buildBreadcrumbs(classData, lessonName);
