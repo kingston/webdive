@@ -8,11 +8,18 @@ comment
 <h2>Variables</h2>
 <div class="annotated-code">
   <pre class="prettyprint linenums">
-var first_name;
+let first_name = 2;
 first_name = "Kingston";
-var last_name = "Tam";</pre>
+const last_name = "Tam";
+// last_name = "Else" will not work</pre>
   <div class="annotation" data-line="1">
+    <strong>Let</strong> is a way to declare a variable whose content you will change
+  </div>
+  <div class="annotation" data-line="2">
     Variables in JavaScript do not have a type so they can take up any type of variable, e.g. string, integer, double, etc.
+  </div>
+  <div class="annotation" data-line="3">
+    <strong>Const</strong> will not let you change the whole variable it after it's been created
   </div>
 </div>
 <h2>If Statements</h2>
@@ -26,17 +33,17 @@ var last_name = "Tam";</pre>
 </div>
 <div class="annotated-code">
   <pre class="prettyprint linenums">
-var first_name = "Kingston";
+const first_name = "Kingston";
 if (first_name === "Kingston") {
-console.log("This person is awesome");
+  console.log("This person is awesome");
 } else if (first_name === "Kevin") {
-console.log("This person is awesome but not as awesome ;)");
+  console.log("This person is awesome but not as awesome ;)");
 } else {
-console.log("Oh hey you");
+  console.log("Oh hey you");
 }
 
 if (0 == "") {
-console.log("Umm... this works?");
+  console.log("Umm... this works?");
 }</pre>
   <div class="annotation" data-line="2">
     Almost always use === (which checks both values are equal in both value and type)
@@ -49,17 +56,17 @@ console.log("Umm... this works?");
 <pre class="prettyprint linenums">
 // inline declaration
 function sumTwoNumbers(num1, num2) {
-return num1 + num2;
+  return num1 + num2;
 }
 // but can also be a variable
-var summer = function(num1, num2) { return num1 + num2; }
+const summer = function(num1, num2) { return num1 + num2; }
 summer(1,2); // returns 3
 </pre>
 <h2>Objects</h2>
 <pre class="prettyprint linenums">
-var kingston = { first_name: "Kingston", last_name: "Tam", age: 22 };
+const kingston = { first_name: "Kingston", last_name: "Tam", age: 22 };
 kingston.doTheDougie = function() {
-alert(this.first_name + ' says no');
+  alert(this.first_name + ' says no');
 };
 kingston.doTheDougie();
 kingston.first_name; // evaluates to "Kingston"
@@ -67,16 +74,16 @@ kingston['first_name']; // also evaluates to Kingston
 </pre>
 <h2>Arrays</h2>
 <pre class="prettyprint linenums">
-var ordinals = ["first", "second", "third"];
+const ordinals = ["first", "second", "third"];
 ordinals[3] = "fourth";
 ordinals.push("fifth"); // add one to the end
 console.log("There are " + ordinals.length + " ordinals and #0 is " + ordinals[0]);
 </pre>
 <h2>For Loops</h2>
 <pre class="prettyprint linenums">
-var christmasSong = "";
-for (var i = 0; i < ordinals.length; i++) {
-christmasSong += "On the " + ordinals[i] + " day of christmas, …\n";
+let christmasSong = "";
+for (let i = 0; i < ordinals.length; i++) {
+  christmasSong += "On the " + ordinals[i] + " day of christmas, …\n";
 }
 console.log(christmasSong);
 </pre><!---->
@@ -87,10 +94,10 @@ setTimeout(function() { alert('boo'); }, 1000); // calls function in 1000 millis
 // old school functions (probably do not have to use)
 alert("HIII!! I'M SO ANNOYING"); // yes, that thing
 document; // the HTML document e.g. from <html> to </html>
-var elem = document.getElementById("myDiv"); // gets an element by ID
+const elem = document.getElementById("myDiv"); // gets an element by ID
 elem.innerHTML = "Cool Stuff"; // modifes the inner HTML of the element
 </pre>
 
 <h2>Exercise #1: The Basics</h2>
-<p>Try out <a href="http://jsfiddle.net/dv99v/1/" target="_blank">this JSFiddle exercise</a> and see if you can fill in the JavaScript to pass all the tests.  (bonus points if you pass the bonus tests)</p>
+<p>Try out <a href="http://jsfiddle.net/dv99v/20/" target="_blank">this JSFiddle exercise</a> and see if you can fill in the JavaScript to pass all the tests.  (bonus points if you pass the bonus tests)</p>
 <p>And if you had time still, try this <a href="http://jsfiddle.net/eRm26/" target="_blank">secondary exercise</a></p>
