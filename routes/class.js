@@ -26,9 +26,6 @@ var classes = {
     title: "Javascript Deep Dive",
     folder: "js",
     lessons: [{
-      name: "basics",
-      title: "The Basics"
-    },{
       name: "patterns",
       title: "Common Patterns"
     },{
@@ -43,6 +40,9 @@ var classes = {
     },{
       name: "mongoose",
       title: "Mongoose"
+    },{
+      name: "basics",
+      title: "The Basics"
     }]
   }
 }
